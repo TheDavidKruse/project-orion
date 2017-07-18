@@ -4,17 +4,18 @@ var knex = require('../db/knex');
 
 // GET All Staff
 router.get('/', function(req, res, next) {
-  knex('staff').select().then(staff => res.render('staff', {
-    staff,
+  knex('staff').select().then(staff => res.render('staff-layout', {
+    staff
   }));
 });
 
 
 //GET staff by ID
 router.get('/:id', function(req, res, next) {
-  knex('staff').select().where('id', req.params.id).then(staff => res.render('staff', {
-    staffs
-  }));
+  knex('staff').select().where('id', req.params.id).then(staff => knex('todo').select().then(todos => res.render('staff-layout', {
+    staff,
+    todos
+  })));
 });
 
 //GET All Students related to staff

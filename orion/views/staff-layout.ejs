@@ -14,16 +14,17 @@
     <link rel="stylesheet" href="/layout.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
   </head>
-  <body>
-    <%-include('components/header-search')%>
-    <div class="row">
-      <%- include('components/nav') %>
-      <div id="bleh">
-        <%- include('components/filler') %>
-      </div>
+<body>
 
-    </div>
-    <%- include('components/footer') %>
+<%- include('components/header') %>
+<%- include('components/nav') %>
 
-  </body>
+<%- include('components/greeting') %>
+<div class="bleh">
+<%- include('components/staff-home') %>
+</div>
+
+
+<%- include('components/footer') %>
+</body>
 </html>
