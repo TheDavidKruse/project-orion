@@ -33,11 +33,4 @@ router.post('/:id', function(req, res, next){
       });
 });
 });
-// "first_name":req.body.first_name,
-// "last_name":req.body.last_name,
-// "email":req.body.email,
-// "photo_url": req.body.photo_url,
-// "staff_id": req.body.staff_id,
-// "password": req.body.password,
-// "username": req.body.username
 module.exports = router;
