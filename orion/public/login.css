@@ -81,6 +81,6 @@
 body{
   font-family: 'Roboto', sans-serif;
   margin: 0px;
-  background-image: url('assets/bleh.jpg');
+  background-image: url('assets/login-background.jpg');
   background-size: cover;
 }
