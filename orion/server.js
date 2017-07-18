@@ -5,10 +5,17 @@ var port = process.env.PORT || 8000;
 var cors = require('cors');
 var logger = require('morgan');
 var knex = require('./db/knex');
-// var expressEJSLayouts = require('express-ejs-layouts');
+var cookiesParser = require('cookie-parser')
 
 var index = require('./routes/indexRoutes');
 var todos = require('./routes/todosRoutes');
+var login = require('./routes/login');
+var contacts = require('./routes/contactsRoutes');
+var jobs = require('./routes/jobsRoutes');
+var student = require('./routes/studentRoutes');
+var staff = require('./routes/staffRoutes');
+var goal = require('./routes/goalRoutes');
+
 
 var app = express();
 
@@ -19,12 +26,20 @@ app.use(express.static(__dirname + '/public'));
 app.use(logger('dev'));
 app.use(cors());
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(expressEJSLayouts);
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+app.use(cookiesParser());
 
-app.use('/', index);
 app.use('/todos', todos);
+app.use('/login', login);
+app.use('/contacts', contacts);
+app.use('/jobs', jobs);
+app.use('/', index);
+app.use('/student', student)
+app.use('/staff', staff)
+app.use('/goal', goal)
 
 app.listen(port, function() {
-console.log("listening on port: ", port);
+  console.log("listening on port: ", port);
 })

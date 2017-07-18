@@ -2,12 +2,11 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 
-
-
-/* GET home page. */
+/*
+  GET all contacts
+*/
 router.get('/', function(req, res, next) {
-  res.redirect('/login')
+  res.send('Showing all contacts');
 });
-
 
 module.exports = router;
