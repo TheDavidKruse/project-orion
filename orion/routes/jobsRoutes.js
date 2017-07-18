@@ -3,10 +3,12 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 /*
-  GET all contacts
+  GET all jobs
 */
-router.get('/', function(req, res, next) {
-  res.send('Showing all contacts');
+router.get('/', (req, res, next) => {
+  knex('jobs').then((jobs) => {
+    res.send(jobs);
+  });
 });
 
 module.exports = router;
