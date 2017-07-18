@@ -3,7 +3,8 @@ exports.seed = function(knex, Promise) {
   return knex('contacts').del()
     .then(function() {
       // Inserts seed entries
-      return knex('contacts').insert([{
+      return knex('contacts').insert([
+      {
         "first_name": "John",
         "last_name": "Snow",
         "email": "thewatch@thewall",
@@ -14,6 +15,19 @@ exports.seed = function(knex, Promise) {
         "meeting": "meetup",
         "synopsis": "He was tall dark and handsome I felt my knees get weak in his very presence",
         "follow_up": "he sent a raven my way",
+        "student_id": 1
+      },
+      {
+        "first_name": "Spider",
+        "last_name": "Man",
+        "email": "thespideyh@thewall",
+        "company_name": "Webby watch",
+        "position": "Superhero",
+        "industry": "True hero of the North",
+        "date_meeting": "Mon Jul 18 2017",
+        "meeting": "hackathon",
+        "synopsis": "He was agile and swift I felt my knees get weak in his very presence",
+        "follow_up": "he sent a webs my way",
         "student_id": 1
       },
       {

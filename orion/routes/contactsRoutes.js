@@ -15,7 +15,7 @@ router.get('/', (req, res, next) => {
   GET all contacts by student ID
 */
 router.get('/student/:id', (req, res, next) => {
-  knex('contacts').where('student_id', req.params.id).then((contacts) => {
+  knex('contacts').where('id', req.params.id).then((contacts) => {
     res.send(contacts);
   });
 });
