@@ -12,7 +12,9 @@ var todos = require('./routes/todosRoutes');
 var login = require('./routes/login');
 var contacts = require('./routes/contactsRoutes');
 var jobs = require('./routes/jobsRoutes');
-var user = require('./routes/userRoutes');
+var student = require('./routes/studentRoutes');
+var staff = require('./routes/staffRoutes');
+var goal = require('./routes/goalRoutes');
 
 
 var app = express();
@@ -33,8 +35,9 @@ app.use('/login', login);
 app.use('/contacts', contacts);
 app.use('/jobs', jobs);
 app.use('/', index);
-app.use('/user', user)
-
+app.use('/student', student)
+app.use('/staff', staff)
+app.use('/goal', goal)
 
 app.listen(port, function() {
   console.log("listening on port: ", port);

@@ -3,13 +3,9 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 function basicAuth(req, res, next) {
-  if (req.cookies.login) {
-    res.redirect('/user')
-  } else {
-    res.redirect('/login')
-  }
+  req.cookies.login ? res.redirect('/user') :
+    next();
 }
-
 /* GET login page page. */
 router.get('/', basicAuth, function(req, res, next) {
   res.render('login')
