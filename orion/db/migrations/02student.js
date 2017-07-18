@@ -5,9 +5,9 @@ exports.up = function(knex, Promise) {
     table.string('last_name').notNullable();
     table.string('email').notNullable();
     table.string('photo_url');
-    table.integer('staff_id').notNullable();
     table.string('password');
     table.string('username');
+    table.integer('staff_id').references('id').inTable('staff');
   });
 };
 
