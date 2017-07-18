@@ -38,7 +38,7 @@ exports.seed = function(knex, Promise) {
           "date_followup": "Wed Jul 19 2017",
           "comments": "gotta catch em all",
           "student_id": 1
-        }
+        },
         {
           "company": "Duder Mifflin Paper Company",
           "job_link": "Paper.com",
