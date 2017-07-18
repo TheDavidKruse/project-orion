@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('student_id').references('id').inTable('student');
     table.integer('todo_id').references('id').inTable('todo');
+    table.date('date_due');
   });
 };
 
