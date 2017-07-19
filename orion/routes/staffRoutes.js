@@ -9,6 +9,10 @@ router.get('/', function(req, res, next) {
   }));
 });
 
+router.get('/home', (req,res,next) => {
+  res.render('components/filler')
+})
+
 
 //GET staff by ID
 router.get('/:id', function(req, res, next) {
@@ -33,6 +37,7 @@ router.post('/:id', function(req, res, next) {
     staff
   }));
 });
+
 
 
 

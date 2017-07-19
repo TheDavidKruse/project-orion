@@ -64,7 +64,7 @@ body{
   background-size: cover;
 }
 
-#bleh{
+#inner-content{
   margin-top: .5%;
   height: 88vh;
   overflow-y: scroll;
