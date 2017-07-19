@@ -3,12 +3,28 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 /*
-  GET all contacts
+  GET all contacts if no query strings passed
+  Otherwise GET one contact for a student ID and contact ID
 */
 router.get('/', (req, res, next) => {
-  knex('contacts').then((contacts) => {
-    res.send(contacts);
-  });
+  if(typeof req.query.student_id !== 'undefined' && typeof req.query.contact_id !== 'undefined') {
+    // Get contact details for a contact using contact ID and student ID
+    let student_id = req.query.student_id;
+    let contact_id = req.query.contact_id;
+    let sqlArr = [
+      knex('contacts').where('student_id', student_id),
+      knex('contacts').where('id', contact_id)
+    ];
+    Promise.all(sqlArr).then((results) => {
+      res.render('student-layout', {
+        contacts: results[0],
+        selectedContact: results[1][0]
+      });
+    });
+  } else {
+    // Get all contacts
+    knex('contacts').then(contacts => res.send(contacts));
+  }
 });
 
 /*
@@ -24,9 +40,12 @@ router.post('/', (req, res, next) => {
   GET all contacts by student ID
 */
 router.get('/student/:id', (req, res, next) => {
-  knex('contacts').where('student_id', req.params.id).then((contacts) => {
-    res.send(contacts);
-  });
+  knex('contacts').where('student_id', req.params.id).then(
+    contacts => res.render('student-layout', {
+      contacts: contacts,
+      selectedContact: false
+    })
+  );
 });
 
 /*
@@ -42,7 +61,7 @@ router.get('/delete/:id', (req, res, next) => {
   GET one contact by contact ID
 */
 router.get('/:id', (req, res, next) => {
-  knex('contacts').where('id', req.params.id).then((contacts) => {
+  knex('contacts').where('id', req.params.id).then(contacts => {
     res.send(contacts);
   });
 });
