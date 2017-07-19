@@ -11,7 +11,8 @@ exports.seed = function(knex, Promise) {
           "staff_id": 1,
           "password": "password1",
           "username": "username1",
-          "cohorts_id": 1
+          "cohorts_id": 1,
+          "is_staff": false
         },
         {
           "first_name": "Emit",
@@ -21,7 +22,8 @@ exports.seed = function(knex, Promise) {
           "staff_id": 1,
           "password": "password2",
           "username": "username2",
-          "cohorts_id": 1
+          "cohorts_id": 1,
+          "is_staff": false
         },
         {
           "first_name": "David",
@@ -31,7 +33,8 @@ exports.seed = function(knex, Promise) {
           "staff_id": 2,
           "password": "password3",
           "username": "username3",
-          "cohorts_id": 2
+          "cohorts_id": 2,
+          "is_staff": false
         },
         {
           "first_name": "Shu Sia",
@@ -41,7 +44,8 @@ exports.seed = function(knex, Promise) {
           "staff_id": 2,
           "password": "password4",
           "username": "username4",
-          "cohorts_id": 2
+          "cohorts_id": 2,
+          "is_staff": false
         }
       ]);
     });
