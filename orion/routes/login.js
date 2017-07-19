@@ -3,9 +3,16 @@ var router = express.Router();
 var knex = require('../db/knex');
 
 function basicAuth(req, res, next) {
-  req.cookies.login ? res.redirect('/student') :
-    next();
+  knex('staff').select().then(staff => {
+    if (req.cookies.email) {
+      var finder = () => staff.filter(match => req.cookies.email);
+      res.redirect(`/staff/${finder()[0].id}`)
+    } else {
+      next();
+    }
+  })
 }
+
 /* GET login page page. */
 router.get('/', basicAuth, function(req, res, next) {
   res.render('login')
@@ -13,8 +20,16 @@ router.get('/', basicAuth, function(req, res, next) {
 
 /* Post Login page. */
 router.post('/', function(req, res, next) {
-  res.cookie('login', true);
-  res.redirect('/student');
+  knex('staff').select().then(staff => {
+    var finder = match => match.email == req.body.email;
+    var id = staff.find(finder).id
+    console.log(id)
+
+    finder() ? res.cookie('id', id) :
+      res.cookie('login', true);
+    res.cookie('email', req.body.email);
+    res.redirect('/student');
+  })
 });
 
 /* Post Sign Out page. */

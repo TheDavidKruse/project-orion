@@ -12,10 +12,15 @@ router.get('/', function(req, res, next) {
 
 //GET staff by ID
 router.get('/:id', function(req, res, next) {
-  knex('staff').select().where('id', req.params.id).then(staff => knex('todo').select().then(todos => res.render('staff-layout', {
-    staff,
-    todos
-  })));
+  knex('staff').select().where('id', req.params.id).then(staff => {
+    knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo
+join student on student.id = student_todo.student_id
+join staff on staff.id = student.staff_id
+join todo on todo.id = student_todo.todo_id where staff.id = ${req.params.id}`).then(staffHome => res.render('staff-layout', {
+      staffHome: staffHome.rows
+    }))
+  })
+
 });
 
 //GET All Students related to staff
