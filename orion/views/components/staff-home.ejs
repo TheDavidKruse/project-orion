@@ -1,20 +1,33 @@
 <div class="row">
   <div class="col-md-11">
     <table class="table table-striped table-hover ">
+
+
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Student</th>
+      <th>Assignment</th>
       <th>Description</th>
       <th>Status</th>
     </tr>
   </thead>
   <tbody>
-    <% for (var i = 0; i< todos.length; i++){%>
-      <% var {name, description, status} = todos[i]%>
+    <% for (let i = 0; i < staffHome.length; i++){%>
+      <% var {todo_id, staff_id, staff_first, staff_last, student_first, student_last, assignment_name, description, status, } = staffHome[i] %>
     <tr>
-      <td><%= name %></td>
+      <td><%= student_first %> <%= student_last%></td>
+      <td><%= assignment_name %></td>
       <td><%= description %></td>
       <td><%= status %></td>
+      <% if (status == "not complete"){%>
+      <form action="/todos/complete/<%=todo_id%>" method="post">
+      <td><button >Complete</button>
+      </form>
+        <%} else { %>
+          <form action="/todos/notcomplete/<%=todo_id%>" method="post">
+          <td><button >Not Complete</button>
+          </form>
+          <%}%>
     </tr>
   <%}%>
   </tbody>
