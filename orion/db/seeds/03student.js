@@ -10,7 +10,8 @@ exports.seed = function(knex, Promise) {
           "photo_url": "http://imgur.com/a/qN0eA",
           "staff_id": 1,
           "password": "password1",
-          "username": "username1"
+          "username": "username1",
+          "cohorts_id": 1
         },
         {
           "first_name": "Emit",
@@ -19,7 +20,8 @@ exports.seed = function(knex, Promise) {
           "photo_url": "http://imgur.com/a/BCzlG",
           "staff_id": 1,
           "password": "password2",
-          "username": "username2"
+          "username": "username2",
+          "cohorts_id": 1
         },
         {
           "first_name": "David",
@@ -28,7 +30,8 @@ exports.seed = function(knex, Promise) {
           "photo_url": "http://imgur.com/a/0O9jP",
           "staff_id": 2,
           "password": "password3",
-          "username": "username3"
+          "username": "username3",
+          "cohorts_id": 2
         },
         {
           "first_name": "Shu Sia",
@@ -37,7 +40,8 @@ exports.seed = function(knex, Promise) {
           "photo_url": "http://imgur.com/a/QJ3JU",
           "staff_id": 2,
           "password": "password4",
-          "username": "username4"
+          "username": "username4",
+          "cohorts_id": 2
         }
       ]);
     });

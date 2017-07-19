@@ -8,6 +8,7 @@ exports.up = function(knex, Promise) {
     table.string('password');
     table.string('username');
     table.integer('staff_id').references('id').inTable('staff');
+    table.integer('cohorts_id').references('id').inTable('cohorts');
   });
 };
 
