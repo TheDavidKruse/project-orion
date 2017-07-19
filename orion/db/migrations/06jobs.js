@@ -4,7 +4,6 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.string('company');
     table.string('job_link');
-    table.string('industry');
     table.string('location');
     table.string('job_title');
     table.string('hiring_manager');
@@ -18,6 +17,7 @@ exports.up = function(knex, Promise) {
     table.date('date_followup');
     table.text('comments');
     table.integer('student_id').references('id').inTable('student');
+    table.integer('industry_id').references('id').inTable('industry');
   });
 };
 

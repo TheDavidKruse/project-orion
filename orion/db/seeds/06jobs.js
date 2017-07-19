@@ -6,7 +6,7 @@ exports.seed = function(knex, Promise) {
       return knex('jobs').insert([{
           "company": "willie wonkas chocolate factory",
           "job_link": "wonka.com",
-          "industry": "Chocolate makin",
+          "industry_id": 1,
           "location": "W. Wonka lane 5555",
           "job_title": "coder for the choclate machines",
           "hiring_manager": "Umpa Loompa",
@@ -24,7 +24,7 @@ exports.seed = function(knex, Promise) {
         {
           "company": "Pokemon",
           "job_link": "pokemon.com",
-          "industry": "Training pokemon",
+          "industry_id": 2,
           "location": "W. Pokemon lane 5555",
           "job_title": "coder for the trainers",
           "hiring_manager": "Umpa Loompa",
@@ -42,7 +42,7 @@ exports.seed = function(knex, Promise) {
         {
           "company": "Duder Mifflin Paper Company",
           "job_link": "Paper.com",
-          "industry": "Making paper",
+          "industry_id": 3,
           "location": "W. OFFCIE SPACE Rd. 999",
           "job_title": "Printing paper",
           "hiring_manager": "Milton",
@@ -60,7 +60,7 @@ exports.seed = function(knex, Promise) {
         {
           "company": "Pied piper",
           "job_link": "piedpiper.com",
-          "industry": "Data compression",
+          "industry_id": 4,
           "location": "Silicon Valley",
           "job_title": "CTO",
           "hiring_manager": "Erlech Bachman",
@@ -78,7 +78,7 @@ exports.seed = function(knex, Promise) {
         {
           "company": "Black-Briar Meadery",
           "job_link": "Black-Briar.com",
-          "industry": "selling mead fool",
+          "industry_id": 5,
           "location": "Riften",
           "job_title": "Bartender",
           "hiring_manager": "Ungrien",

@@ -4,24 +4,23 @@ exports.seed = function(knex, Promise) {
     .then(function() {
       // Inserts seed entries
       return knex('target').insert([{
-          "industry": "banking",
+          "industry_id": 1,
           "geography": "North America",
-          "role": "junior software developer",
+          "role": "Junior Software Developer",
           "comments": "Startup with 10+ employees"
         },
         {
-          "industry": "Graphic Design",
+          "industry_id": 36,
           "geography": "China",
-          "role": "UX developer",
+          "role": "UX Developer",
           "comments": "Large company 5000+"
         },
         {
-          "industry": "Accounting",
+          "industry_id": 1,
           "geography": "Russia",
-          "role": "Project manager",
+          "role": "Project Manager",
           "comments": "Medium company 50+ employees"
         }
-
       ]);
     });
 };
