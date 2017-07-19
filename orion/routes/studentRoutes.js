@@ -7,7 +7,8 @@ var knex = require('../db/knex');
 */
 router.get('/', function(req, res) {
   knex('student').then(function(student) {
-    res.send(student);
+    // res.send(student);
+    res.render('student-layout');
   });
 });
 
