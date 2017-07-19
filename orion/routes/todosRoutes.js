@@ -34,10 +34,11 @@ router.get('/:id/edit', function(req, res, next) {
 
 //EDIT TODOS POST
 router.post('/complete/:id', function(req, res, next) {
+  console.log("this is the body, ", req.body.staff_id)
   knex('todo').update('status', 'complete').where('id', req.params.id)
     .then(function(todo) {
-      console.log(todo)
-      res.redirect(`/staff/1`)
+      console.log('this is todos', todo)
+      res.redirect(`/staff/${req.body.staff_id}`)
     });
 });
 
@@ -45,7 +46,7 @@ router.post('/notcomplete/:id', function(req, res, next) {
   knex('todo').update('status', 'not complete').where('id', req.params.id)
     .then(function(todo) {
       console.log(todo)
-      res.redirect(`/staff/1`)
+      res.redirect(`/staff/${req.body.staff_id}`)
     });
 });
 

@@ -8,24 +8,27 @@
       <th>Student</th>
       <th>Assignment</th>
       <th>Description</th>
+      <th>Due Date</th>
       <th>Status</th>
     </tr>
   </thead>
   <tbody>
     <% for (let i = 0; i < staffHome.length; i++){%>
-      <% var {todo_id, staff_id, staff_first, staff_last, student_first, student_last, assignment_name, description, status, } = staffHome[i] %>
+      <% var {todo_id, date_due, staff_id, staff_first, staff_last, student_first, student_last, assignment_name, description, status, } = staffHome[i] %>
     <tr>
       <td><%= student_first %> <%= student_last%></td>
       <td><%= assignment_name %></td>
       <td><%= description %></td>
       <td><%= status %></td>
+      <td><%= date_due %>
       <% if (status == "not complete"){%>
       <form action="/todos/complete/<%=todo_id%>" method="post">
-      <td><button >Complete</button>
+      <td> <input type="hidden" name="staff_id" value="<%=staff_id%>">
+      <button >Mark Complete</button></td>
       </form>
         <%} else { %>
-          <form action="/todos/notcomplete/<%=todo_id%>" method="post">
-          <td><button >Not Complete</button>
+          <form action="/todos/notcomplete/<%=todo_id%>" method="post"> <input type="hidden" name="staff_id" value="<%=staff_id%>">
+          <td><button >Not Complete</button></td>
           </form>
           <%}%>
     </tr>
