@@ -7,6 +7,7 @@ exports.up = function(knex, Promise) {
     table.string('photo_url');
     table.string('password');
     table.string('username');
+    table.boolean('is_staff');
 
   });
 
