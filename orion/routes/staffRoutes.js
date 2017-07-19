@@ -9,9 +9,6 @@ router.get('/', function(req, res, next) {
   }));
 });
 
-router.get('/home', (req,res,next) => {
-  res.render('components/filler')
-})
 
 
 //GET staff by ID
