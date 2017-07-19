@@ -7,9 +7,20 @@ var logger = require('morgan');
 var knex = require('./db/knex');
 var cookiesParser = require('cookie-parser')
 
+var app = express();
+
+
+function basicAuth(req, res, next) {
+  if (req.cookies.id) {
+    next()
+  } else {
+    res.redirect('/login')
+  }
+}
+
 var index = require('./routes/indexRoutes');
-var todos = require('./routes/todosRoutes');
 var login = require('./routes/login');
+var todos = require('./routes/todosRoutes');
 var contacts = require('./routes/contactsRoutes');
 var jobs = require('./routes/jobsRoutes');
 var student = require('./routes/studentRoutes');
@@ -17,7 +28,6 @@ var staff = require('./routes/staffRoutes');
 var goal = require('./routes/goalRoutes');
 
 
-var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -31,11 +41,12 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(cookiesParser());
 
-app.use('/todos', todos);
+app.use('/', index);
 app.use('/login', login);
+app.use(basicAuth);
+app.use('/todos', todos);
 app.use('/contacts', contacts);
 app.use('/jobs', jobs);
-app.use('/', index);
 app.use('/student', student)
 app.use('/staff', staff)
 app.use('/goal', goal)
