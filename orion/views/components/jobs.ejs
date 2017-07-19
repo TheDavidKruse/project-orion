@@ -1,0 +1,79 @@
+<div class="row">
+
+  <div class="col-md-5">
+    <table class="table table-striped table-hover ">
+      <tr>
+        <th>Company</th>
+        <th>Job Title</th>
+        <th>Hiring Manager</th>
+        <th>Recruiter</th>
+      </tr>
+      <% for (let job of jobs) { %>
+      <tr>
+        <td><a href="/jobs?student_id=<%= job.student_id %>&job_id=<%= job.id %>"><%= job.company %></a></td>
+        <td><%= job.job_title %></td>
+        <td><%= job.hiring_manager %></td>
+        <td><%= job.recruting_lead %></td>
+      </tr>
+      <% } %>
+    </table>
+  </div>
+
+  <div class="col-md-1"></div>
+
+  <div class="col-md-6">
+    <% if (selectedJob) { %>
+      <h3><%= selectedJob.company %></h3>
+      <h4><%= selectedJob.job_title %></h4>
+      <div class="row">
+        <div class="col-md-4">Company:</div>
+        <div class="col-md-8"><%= selectedJob.company %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Industry</div>
+        <div class="col-md-8"><%= selectedJob.industry %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Job Title:</div>
+        <div class="col-md-8"><%= selectedJob.job_title %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Job Link:</div>
+        <div class="col-md-8"><%= selectedJob.job_link %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Location:</div>
+        <div class="col-md-8"><%= selectedJob.location %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Hiring Manager:</div>
+        <div class="col-md-8"><%= selectedJob.hiring_manager %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Recruiting Lead:</div>
+        <div class="col-md-8"><%= selectedJob.recruting_lead %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Apply Date:</div>
+        <div class="col-md-8"><%= selectedJob.date_applied %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Submit Date:</div>
+        <div class="col-md-8"><%= selectedJob.date_submit %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Phone Interview:</div>
+        <div class="col-md-8"><%= selectedJob.date_phone_interview %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Follow-up Date:</div>
+        <div class="col-md-8"><%= selectedJob.date_followup %></div>
+      </div>
+      <div class="row">
+        <div class="col-md-4">Comments:</div>
+        <div class="col-md-8"><%= selectedJob.comments %></div>
+      </div>
+    <% } %>
+  </div>
+
+</div>
