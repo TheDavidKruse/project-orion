@@ -8,7 +8,11 @@ var knex = require('../db/knex');
 router.get('/', function(req, res) {
   knex('student').then(function(student) {
     res.render('student-layout', {
-      student
+      contacts: false,
+      selectedContact: false,
+      jobs: false,
+      selectedJob: false,
+      students: student
     });
   });
 });
