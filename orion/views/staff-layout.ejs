@@ -12,14 +12,15 @@
   <link rel="stylesheet" href="/layout.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
+
 <body>
 
   <%- include('components/header-search') %>
     <%- include('components/staff-nav') %>
       <%- include('components/greeting') %>
         <div id="inner-content">
+          <%-include('components/student-profile')%>
 
-            <%- include('components/student-profile') %>
         </div>
         <%- include('components/footer') %>
         <script src="/nav-hide.js" charset="utf-8"></script>
