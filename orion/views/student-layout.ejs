@@ -16,6 +16,9 @@
 
 <%- include('components/greeting-student') %>
 <div id="inner-content">
+  <% if (students) { %>
+    <%- include('components/student-profile') %>
+  <% } %>
   <% if (contacts) { %>
     <%- include('components/contacts') %>
   <% } %>
@@ -24,5 +27,4 @@
   <% } %>
 </div>
 
-</body>
 </html>

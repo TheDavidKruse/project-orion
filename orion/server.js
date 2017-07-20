@@ -26,7 +26,7 @@ var jobs = require('./routes/jobsRoutes');
 var student = require('./routes/studentRoutes');
 var staff = require('./routes/staffRoutes');
 var goal = require('./routes/goalRoutes');
-
+var search = require('./routes/searchRoutes');
 
 
 app.set('views', path.join(__dirname, 'views'));
@@ -43,13 +43,14 @@ app.use(cookiesParser());
 
 app.use('/', index);
 app.use('/login', login);
-app.use(basicAuth);
+// app.use(basicAuth);
 app.use('/todos', todos);
 app.use('/contacts', contacts);
 app.use('/jobs', jobs);
-app.use('/student', student)
-app.use('/staff', staff)
-app.use('/goal', goal)
+app.use('/student', student);
+app.use('/staff', staff);
+app.use('/goal', goal);
+app.use('/search', search);
 
 app.listen(port, function() {
   console.log("listening on port: ", port);
