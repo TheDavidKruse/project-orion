@@ -19,5 +19,7 @@ tablinks[i].className = tablinks[i].className.replace(" active", "");
 document.getElementById(name).style.display = "block";
 evt.currentTarget.className += " active";
 
-
 };
+var startDiv = () => {
+  document.getElementById('home').style.display('');
+}
