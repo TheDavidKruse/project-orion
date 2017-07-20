@@ -9,7 +9,8 @@ exports.seed = function(knex, Promise) {
           "email": "M@M.com",
           "photo_url": null,
           "password": "password1",
-          "username": "username1"
+          "username": "username1",
+          "is_staff": true
         },
         {
           "first_name": "John",
@@ -17,7 +18,8 @@ exports.seed = function(knex, Promise) {
           "email": "J@A.com",
           "photo_url": null,
           "password": "password2",
-          "username": "username2"
+          "username": "username2",
+          "is_staff": true
         }
 
       ]);

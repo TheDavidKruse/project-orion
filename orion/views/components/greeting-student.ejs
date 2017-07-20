@@ -1,0 +1,6 @@
+<% if (contacts) { %>
+  <% var {student_name} = contacts[0]%>
+<% } else if (jobs) { %>
+  <% var {student_name} = jobs[0]%>
+<% } %>
+<h2>Hello, <%=student_name%> </h2>
