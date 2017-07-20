@@ -1,0 +1,41 @@
+<div class="col-md-11">
+  <div class="row">
+    <h3>David Kruz</h3>
+  </div>
+  <div id="profile" class="row tabcontent">
+    <div id="student-pic-background" class="col-md-2">
+      <img id="student-picture" src="http://i.imgur.com/GV2dqxog.jpg" alt="">
+    </div>
+    <div class="col-md-7">
+
+    </div>
+    <div class="col-md-3">
+      <table class="table table-striped table-hover ">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% for (var i = 0; i< staffHome.length; i++){%>
+            <% var {name, description, status} = staffHome[i]%>
+              <tr>
+                <td>
+                  <%= name %>
+                </td>
+                <td>
+                  <%= description %>
+                </td>
+                <td>
+                  <%= status %>
+                </td>
+              </tr>
+              <%}%>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+</div>
