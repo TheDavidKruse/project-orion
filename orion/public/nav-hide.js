@@ -20,7 +20,4 @@ document.getElementById(name).style.display = "block";
 evt.currentTarget.className += " active";
 
 
-}
-var showDiv = () => {
-  document.getElementById("home").style.display="";
-}
+};
