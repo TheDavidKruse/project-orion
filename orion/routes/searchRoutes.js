@@ -27,7 +27,12 @@ router.get('/student', function(req, res) {
         knex('student').where(('last_name'), (req.query.last_name)).then(function(student) {
           res.send(student[0]);
         });
+      } else {
+        console.log('That aint no student of mine');
       }
+      res.render('student-search', {
+        student
+      });
     });
 
 
