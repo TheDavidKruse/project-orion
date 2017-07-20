@@ -21,7 +21,12 @@
 
 <%- include('components/greeting-student') %>
 <div class="bleh">
-  <%- include('components/contacts') %>
+  <% if (contacts) { %>
+    <%- include('components/contacts') %>
+  <% } %>
+  <% if (jobs) { %>
+    <%- include('components/jobs') %>
+  <% } %>
 </div>
 
 <%- include('components/footer') %>

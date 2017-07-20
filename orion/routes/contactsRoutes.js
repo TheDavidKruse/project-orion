@@ -18,7 +18,9 @@ router.get('/', (req, res, next) => {
     Promise.all(sqlArr).then((results) => {
       res.render('student-layout', {
         contacts: results[0].rows,
-        selectedContact: results[1][0]
+        selectedContact: results[1][0],
+        jobs: false,
+        selectedJob: false
       });
     });
   } else {
@@ -40,10 +42,13 @@ router.post('/', (req, res, next) => {
   GET all contacts by student ID
 */
 router.get('/student/:id', (req, res, next) => {
+  console.log('url=', req.originalUrl);
   knex.raw(`select c.company_name, c.position, c.student_id, c.id, concat (c.first_name, ' ', c.last_name) as contact_name, concat (s.first_name, ' ', s.last_name) as student_name from contacts c, student s where c.student_id = s.id and s.id = ${req.params.id}`).then(
     contacts => res.render('student-layout', {
       contacts: contacts.rows,
-      selectedContact: false
+      selectedContact: false,
+      jobs: false,
+      selectedJob: false
     })
   );
 });
