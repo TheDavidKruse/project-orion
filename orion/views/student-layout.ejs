@@ -18,21 +18,19 @@
 
 <%- include('components/greeting-student') %>
 <div id="inner-content">
-  <div id="home" class="tabcontent">
+
     <% if (students) { %>
       <%- include('components/student-profile') %>
     <% } %>
-  </div>
-  <div id="contact" class="tabcontent">
+
     <% if (contacts) { %>
       <%- include('components/contacts') %>
     <% } %>
-  </div>
-  <div id="job" class="tabcontent">
+
     <% if (jobs) { %>
       <%- include('components/jobs') %>
     <% } %>
-  </div>
+
 </div>
 
 <%- include('components/footer') %>
