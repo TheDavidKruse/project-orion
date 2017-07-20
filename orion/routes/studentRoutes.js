@@ -6,9 +6,19 @@ var knex = require('../db/knex');
   GET all contacts
 */
 router.get('/', function(req, res) {
-  knex('student').then(function(student) {
+  let sqlArr = [
+    knex('student'),
+    knex('todo')
+  ];
+
+  Promise.all(sqlArr).then(function(results) {
     res.render('student-layout', {
-      student
+      contacts: false,
+      selectedContact: false,
+      jobs: false,
+      selectedJob: false,
+      students: results[0],
+      todos: results[1]
     });
   });
 });
