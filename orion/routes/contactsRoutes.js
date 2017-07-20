@@ -20,7 +20,8 @@ router.get('/', (req, res, next) => {
         contacts: results[0].rows,
         selectedContact: results[1][0],
         jobs: false,
-        selectedJob: false
+        selectedJob: false,
+        students: false
       });
     });
   } else {
@@ -48,7 +49,8 @@ router.get('/student/:id', (req, res, next) => {
       contacts: contacts.rows,
       selectedContact: false,
       jobs: false,
-      selectedJob: false
+      selectedJob: false,
+      students: false
     })
   );
 });
