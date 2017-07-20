@@ -17,15 +17,17 @@ router.get('/:id', function(req, res, next) {
     knex('student').select(),
     knex('contacts').select(),
     knex('jobs').select(),
+    knex('cohorts').select()
   ];
   Promise.all(sqlArr).then(function(result) {
-    console.log(result[0])
+    console.log(result[2])
     res.render('staff-layout', {
       staff: result[0],
       staffHome: result[1].rows,
       students: result[2],
       contacts: result[3],
       jobs: result[4],
+      cohorts: result[5],
       selectedContact: false,
       selectedJob: false
     })
