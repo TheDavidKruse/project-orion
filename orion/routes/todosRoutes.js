@@ -5,7 +5,7 @@ var knex = require('../db/knex');
 /* GET ALL TODOS. */
 router.get('/', function(req, res) {
   knex('todo').then(function(todo) {
-    res.render('components/todo-list', {
+    res.render('staff-layout', {
       todo
     });
   });

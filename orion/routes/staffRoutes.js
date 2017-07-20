@@ -17,7 +17,8 @@ router.get('/:id', function(req, res, next) {
     knex('student').select(),
     knex('contacts').select(),
     knex('jobs').select(),
-    knex('cohorts').select()
+    knex('cohorts').select(),
+    knex('todo')
   ];
   Promise.all(sqlArr).then(function(result) {
     console.log(result[2])
@@ -28,8 +29,10 @@ router.get('/:id', function(req, res, next) {
       contacts: result[3],
       jobs: result[4],
       cohorts: result[5],
+      todo: result[6],
       selectedContact: false,
       selectedJob: false
+
     })
   })
 
