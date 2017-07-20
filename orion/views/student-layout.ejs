@@ -12,10 +12,10 @@
 <body>
 
 <%- include('components/header-search') %>
-<%- include('components/nav') %>
+<%- include('components/student-nav') %>
 
 <%- include('components/greeting-student') %>
-<div class="bleh">
+<div id="inner-content">
   <% if (contacts) { %>
     <%- include('components/contacts') %>
   <% } %>
@@ -24,13 +24,5 @@
   <% } %>
 </div>
 
-<body>
-    <%- include('components/header-search') %>
-    <%- include('components/student-nav') %>
-      <div id="inner-content">
-        <%-include('components/filler')%>
-      </div>
-    <%- include('components/footer') %>
 </body>
-
 </html>

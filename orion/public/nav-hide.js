@@ -18,5 +18,9 @@ tablinks[i].className = tablinks[i].className.replace(" active", "");
 // Show the current tab, and add an "active" class to the button that opened the tab
 document.getElementById(name).style.display = "block";
 evt.currentTarget.className += " active";
+
+
 }
-document.getElementById("home").click();
+var showDiv = () => {
+  document.getElementById("home").style.display="";
+}
