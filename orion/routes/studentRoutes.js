@@ -23,7 +23,7 @@ router.get('/:id', function(req, res, next) {
     knex.raw(`select s.photo_url, s.email, concat (s.first_name, ' ', s.last_name) as student_name, t.*, st.* from student s, todo t, student_todo st where s.id = st.student_id and t.id = st.todo_id and s.id = ${req.params.id}`)
   ];
   Promise.all(sqlArr).then(function(result) {
-    console.log('this is from student routes', result[5])
+    console.log('this is from student routes', result[5].rows)
     res.render('student-layout', {
       staff: result[0],
       staffHome: result[1].rows,

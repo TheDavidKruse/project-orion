@@ -20,8 +20,8 @@ router.get('/:id', function(req, res, next) {
   ];
   Promise.all(sqlArr).then(function(result) {
     console.log(result[0])
-    res.render('student-layout', {
-      staff: result[0].rows,
+    res.render('staff-layout', {
+      staff: result[0],
       staffHome: result[1].rows,
       students: result[2],
       contacts: result[3],
