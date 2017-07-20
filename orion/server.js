@@ -43,7 +43,7 @@ app.use(cookiesParser());
 
 app.use('/', index);
 app.use('/login', login);
-app.use(basicAuth);
+// app.use(basicAuth);
 app.use('/todos', todos);
 app.use('/contacts', contacts);
 app.use('/jobs', jobs);
