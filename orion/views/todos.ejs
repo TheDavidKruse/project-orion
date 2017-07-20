@@ -1,0 +1,14 @@
+<% if(todo){ %>
+  <% console.log('in ejs checking todo=', todo) %>
+  <form class="" action="/todos/update/<%= todo[0].id %>" method="post">
+  <input type="text" name="name" placeholder="name" value="<%= todo[0].name %>">
+  <input type="text" name="description" placeholder="description" value="<%= todo[0].description %>">
+  <input type="submit">
+  </form>
+<% } else { %>
+  <form class="" action="/todos" method="post">
+  <input type="text" name="name" placeholder="name">
+  <input type="text" name="description" placeholder="description">
+  <input type="submit">
+  </form>
+<% } %>

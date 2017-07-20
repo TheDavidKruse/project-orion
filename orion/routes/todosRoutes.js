@@ -5,15 +5,35 @@ var knex = require('../db/knex');
 /* GET ALL TODOS. */
 router.get('/', function(req, res) {
   knex('todo').then(function(todo) {
-    res.send(todo);
+    res.render('components/todo-list', {
+      todo
+    });
   });
 });
-// GET TODOS BY ID
-router.get('/:id', function(req, res) {
+
+// DISPLAY EDIT TO DO
+router.get('/edit/:id', function (req, res) {
   knex('todo').where('id', req.params.id).then(function(todo) {
-    res.send(todo);
+    console.log('hehe',todo);
+    res.render('todos', {todo: todo});
+  });
+  // res.render('todos');
+});
+
+// DISPLAY ADD TO DO
+router.get('/add', function (req, res) {
+  res.render('todos', {todo: false});
+});
+
+
+//DELETE TODOS
+router.get('/delete/:id', function(req, res, next) {
+  console.log('tryig to delete here');
+  knex('todo').where('id', req.params.id).del().then(function(todo) {
+    res.redirect('/todos');
   });
 });
+
 
 //GET ALL TODOS FOR STUDENT
 router.get('/student/:id', function(req, res) {
@@ -30,9 +50,16 @@ router.get('/:id/edit', function(req, res, next) {
   });
 });
 
+//EDIT TODOS post
+router.post('/update/:id', function (req, res, next) {
+  knex('todo').update(req.body).where('id', req.params.id).then(function (todo) {
+    knex('todo').select().then(function (todos) {
+      res.redirect('/todos');
+    });
+  });
+});
 
-
-//EDIT TODOS POST
+//EDIT TODOS POST TO UPDATE STATUS
 router.post('/complete/:id', function(req, res, next) {
   console.log("this is the body, ", req.body.staff_id)
   knex('todo').update('status', 'complete').where('id', req.params.id)
@@ -56,16 +83,17 @@ router.post('/', function(req, res) {
   console.log(req.body);
   knex('todo').insert(req.body).then(function() {
     knex('todo').select().then(function(todo) {
-      res.send(todo);
+      res.redirect('/todos');
     });
   });
 });
 
 
-//DELETE TODOS
-router.post('/delete/:id', function(req, res, next) {
-  knex('todo').where('id', req.params.id).del().then(function(todo) {
-    res.send('deleted');
+
+// GET TODOS BY ID
+router.get('/:id', function(req, res) {
+  knex('todo').where('id', req.params.id).then(function(todo) {
+    res.send(todo);
   });
 });
 

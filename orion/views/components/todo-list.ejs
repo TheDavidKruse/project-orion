@@ -1,0 +1,21 @@
+<a href="/todos/add">Add To Do</a>
+<table class="table table-striped table-hover ">
+
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Description</th>
+  <th></th>
+</tr>
+</thead>
+<tbody>
+<% for (var i = 0; i< todo.length; i++){%>
+  <% var {id, name, description, status} = todo[i]%>
+<tr>
+  <td><%= name %></td>
+  <td><%= description %></td>
+  <td><a href="/todos/edit/<%= id %>">Edit</a> <a href="/todos/delete/<%= id %>">Delete</a></td>
+</tr>
+<%}%>
+</tbody>
+</table>
