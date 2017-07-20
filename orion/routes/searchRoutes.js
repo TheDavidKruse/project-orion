@@ -6,9 +6,13 @@ var knex = require('../db/knex');
   SEARCH
 */
 router.get('/', (req, res, next) => {
-  console.log('searching...');
-  knex('student').then(function(students) {
-    res.send(students);
+//   console.log('searching using ...', `select * from student
+// where lower(concat (first_name, ' ', last_name)) like '%${req.body.student_name}%'`);
+console.log('req.body=' ,req.query);
+  // knex('student').then(function(students) {
+  knex.raw(`select * from student
+where lower(concat (first_name, ' ', last_name)) like '%${req.query.student_name}%'`).then(function(students) {
+    res.send(students.rows);
   });
 });
 

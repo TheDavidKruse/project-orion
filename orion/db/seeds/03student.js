@@ -15,6 +15,17 @@ exports.seed = function(knex, Promise) {
           "is_staff": false
         },
         {
+            "first_name": "Stephen",
+            "last_name": "Twinbrother",
+            "email": "S@E.com",
+            "photo_url": "http://i.imgur.com/GV2dqxo.jpg",
+            "staff_id": 1,
+            "password": "password1",
+            "username": "username1",
+            "cohorts_id": 1,
+            "is_staff": false
+          },
+        {
           "first_name": "Emit",
           "last_name": "Dutcher",
           "email": "E@D.com",
