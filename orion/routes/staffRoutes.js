@@ -10,6 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 
+
 //GET staff by ID
 router.get('/:id', function(req, res, next) {
   knex('staff').select().where('id', req.params.id).then(staff => {
@@ -38,6 +39,7 @@ router.post('/:id', function(req, res, next) {
     staff
   }));
 });
+
 
 
 
