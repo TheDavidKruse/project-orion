@@ -27,7 +27,7 @@ exports.seed = function(knex, Promise) {
         },
         {
           "first_name": "David",
-          "last_name": "Kruz",
+          "last_name": "Kruse",
           "email": "D@K.com",
           "photo_url": "http://i.imgur.com/ieQ0ZICg.jpg",
           "staff_id": 2,
