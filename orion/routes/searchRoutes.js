@@ -7,9 +7,35 @@ var knex = require('../db/knex');
 */
 router.get('/', (req, res, next) => {
   console.log('searching...');
-  knex('student').then(function (students) {
+  knex('student').then(function(students) {
     res.send(students);
   });
 });
 
-module.exports = router;
+// get student by first name
+router.get('/student', function(req, res) {
+      if (req.query.first_name && req.query.last_name) {
+        knex('student').where(('first_name', 'last_name'), (req.query.first_name, req.query.last_name)).then(function(student) {
+          console.log('finding student by name', student);
+          res.send(student[0]);
+        });
+      } else if (req.query.first_name) {
+        knex('student').where(('first_name'), (req.query.first_name)).then(function(student) {
+          res.send(student[0]);
+        });
+      } else if (req.query.last_name) {
+        knex('student').where(('last_name'), (req.query.last_name)).then(function(student) {
+          res.send(student[0]);
+        });
+      }
+    });
+
+
+
+
+
+
+
+
+
+    module.exports = router;
