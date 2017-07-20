@@ -11,7 +11,6 @@ router.get('/', function(req, res) {
     knex('todo')
   ];
 
-  // knex('student').then(function(student) {
   Promise.all(sqlArr).then(function(results) {
     res.render('student-layout', {
       contacts: false,
