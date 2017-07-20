@@ -1,5 +1,5 @@
 
-function openDiv(evt, name) {
+var openDiv = (evt, name) => {
 // Declare all variables
 var i, tabcontent, tablinks;
 
@@ -20,4 +20,3 @@ document.getElementById(name).style.display = "block";
 evt.currentTarget.className += " active";
 }
 document.getElementById("home").click();
-console.log('butts');
