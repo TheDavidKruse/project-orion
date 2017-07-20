@@ -2,6 +2,21 @@ var express = require('express');
 var router = express.Router();
 var knex = require('../db/knex');
 
+/**************************************
+START: NEED TO MOVE THIS TO SEARCH LATER
+***************************************/
+
+router.get('/search', (req, res, next) => {
+  console.log('searching...');
+  knex('student').then(function (students) {
+    res.send(students);
+  });
+});
+
+/**************************************
+END: NEED TO MOVE THIS TO SEARCH LATER
+***************************************/
+
 /*
   GET all contacts if no query strings passed
   Otherwise GET one contact for a student ID and contact ID
