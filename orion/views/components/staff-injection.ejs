@@ -1,17 +1,20 @@
-<% if (students.length === 1) { %>
-  <div id="profile" class="row">
-    <%-include('staff-profile')%>
-  </div>
-  <div id="students" class="row tabcontent">
-    <%-include('students-list')%>
-  </div>
-<% } else if (students.length > 1) { %>
-  <div id="profile" class="row tabcontent">
-    <%-include('staff-profile')%>
-  </div>
-  <div id="students" class="row">
-    <%-include('students-list')%>
-  </div>
+<% if (action === true) { %>
+  <% console.log('in staff-injection ejs, students.length=', students.length); %>
+  <% if (students.length <= 1) { %>
+    <div id="profile" class="row">
+      <%-include('staff-profile')%>
+    </div>
+    <div id="students" class="row tabcontent">
+      <%-include('students-list')%>
+    </div>
+  <% } else { %>
+    <div id="profile" class="row tabcontent">
+      <%-include('staff-profile')%>
+    </div>
+    <div id="students" class="row">
+      <%-include('students-list')%>
+    </div>
+  <% } %>
 <% } else { %>
   <div id="profile" class="row tabcontent">
     <%-include('staff-profile')%>
@@ -26,5 +29,10 @@
 </div>
 
 <div id="todos" class="row tabcontent">
-  <%-include('todo-list')%>
+  <% console.log('in staff-injection ejs, action=', action); %>
+  <% if (action === 'edit' || action === 'add') { %>
+    <%-include('todos')%>
+  <% } else { %>
+    <%-include('todo-list')%>
+  <% } %>
 </div>
