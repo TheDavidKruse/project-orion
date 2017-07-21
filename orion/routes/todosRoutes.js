@@ -15,8 +15,8 @@ router.get('/', function(req, res) {
 // DISPLAY EDIT TO DO
 router.get('/edit/:id', function (req, res) {
   console.log(`in the /edit/${req.params.id} route`);
-  let sqlArr = [knex('staff').select().where('id', 1),
-    knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo join student on student.id = student_todo.student_id join staff on staff.id = student.staff_id join todo on todo.id = student_todo.todo_id where staff.id = 1`),
+  let sqlArr = [knex('staff').select().where('id', req.cookies.id),
+    knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo join student on student.id = student_todo.student_id join staff on staff.id = student.staff_id join todo on todo.id = student_todo.todo_id where staff.id = ${req.cookies.id}`),
     knex('student').select(),
     knex('contacts').select(),
     knex('jobs').select(),
@@ -42,8 +42,8 @@ router.get('/edit/:id', function (req, res) {
 // DISPLAY ADD TO DO
 router.get('/add', function (req, res) {
   console.log('in the /add route');
-  let sqlArr = [knex('staff').select().where('id', 1),
-    knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo join student on student.id = student_todo.student_id join staff on staff.id = student.staff_id join todo on todo.id = student_todo.todo_id where staff.id = 1`),
+  let sqlArr = [knex('staff').select().where('id', req.cookies.id),
+    knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo join student on student.id = student_todo.student_id join staff on staff.id = student.staff_id join todo on todo.id = student_todo.todo_id where staff.id = ${req.cookies.id}`),
     knex('student').select(),
     knex('contacts').select(),
     knex('jobs').select(),
@@ -70,7 +70,7 @@ router.get('/add', function (req, res) {
 //DELETE TODOS
 router.get('/delete/:id', function(req, res, next) {
   knex('todo').where('id', req.params.id).del().then(function(todo) {
-    res.redirect(`/staff/1`);
+    res.redirect(`/staff/${req.cookies.id}`);
   });
 });
 
@@ -94,7 +94,7 @@ router.get('/:id/edit', function(req, res, next) {
 router.post('/update/:id', function (req, res, next) {
   knex('todo').update(req.body).where('id', req.params.id).then(function (todo) {
     knex('todo').select().then(function (todos) {
-      res.redirect(`/staff/1`);
+      res.redirect(`/staff/${req.cookies.id}`);
     });
   });
 });
@@ -123,7 +123,7 @@ router.post('/', function(req, res) {
   req.body.status = 'not complete',
   knex('todo').insert(req.body).then(function() {
     knex('todo').select().then(function(todo) {
-      res.redirect(`/staff/1`);
+      res.redirect(`/staff/${req.cookies.id}`);
     });
   });
 });
