@@ -1,4 +1,6 @@
 
+
+var studenter;
 var openDiv = (evt, name) => {
 // Declare all variables
 var i, tabcontent, tablinks;
@@ -20,8 +22,7 @@ document.getElementById(name).style.display = "block";
 evt.currentTarget.className += " active";
 
 };
-function dontHideMe() {
-    document.getElementById("home-button").click(); // Click on the checkbox
+var dontHideMe = () => {
+    document.getElementById("todos-button").click(); // Click on the checkbox
 };
 dontHideMe();
-document.getElementById('home').style.display = "block";
