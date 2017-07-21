@@ -20,6 +20,8 @@ document.getElementById(name).style.display = "block";
 evt.currentTarget.className += " active";
 
 };
-var startDiv = () => {
-  document.getElementById('home').style.display('');
-}
+function dontHideMe() {
+    document.getElementById("home-button").click(); // Click on the checkbox
+};
+dontHideMe();
+document.getElementById('home').style.display = "block";
