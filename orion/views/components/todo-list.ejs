@@ -9,13 +9,14 @@
 </tr>
 </thead>
 <tbody>
-<% for (var i = 0; i< todo.length; i++){%>
+<% console.log('in todo-list ejs, action=', action); %>
+<% for (var i = 0; i< todo.length; i++) { %>
   <% var {id, name, description, status} = todo[i]%>
 <tr>
   <td><%= name %></td>
   <td><%= description %></td>
   <td><a href="/todos/edit/<%= id %>">Edit</a> <a href="/todos/delete/<%= id %>">Delete</a></td>
 </tr>
-<%}%>
+<% } %>
 </tbody>
 </table>

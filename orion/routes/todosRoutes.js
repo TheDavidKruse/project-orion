@@ -6,31 +6,71 @@ var knex = require('../db/knex');
 router.get('/', function(req, res) {
   knex('todo').then(function(todo) {
     res.render('staff-layout', {
-      todo
+      todo: todo,
+      action: 'list'
     });
   });
 });
 
 // DISPLAY EDIT TO DO
 router.get('/edit/:id', function (req, res) {
-  knex('todo').where('id', req.params.id).then(function(todo) {
-    console.log('hehe',todo);
-    res.render('todos', {todo: todo});
+  console.log(`in the /edit/${req.params.id} route`);
+  let sqlArr = [knex('staff').select().where('id', 1),
+    knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo join student on student.id = student_todo.student_id join staff on staff.id = student.staff_id join todo on todo.id = student_todo.todo_id where staff.id = 1`),
+    knex('student').select(),
+    knex('contacts').select(),
+    knex('jobs').select(),
+    knex('cohorts').select(),
+    knex('todo').where('id', req.params.id)
+  ];
+  Promise.all(sqlArr).then(function(result) {
+    res.render('staff-layout', {
+      staff: result[0],
+      staffHome: result[1].rows,
+      students: result[2],
+      contacts: result[3],
+      jobs: result[4],
+      cohorts: result[5],
+      todo: result[6],
+      selectedContact: false,
+      selectedJob: false,
+      action: 'add'
+    });
   });
-  // res.render('todos');
 });
 
 // DISPLAY ADD TO DO
 router.get('/add', function (req, res) {
-  res.render('todos', {todo: false});
+  console.log('in the /add route');
+  let sqlArr = [knex('staff').select().where('id', 1),
+    knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo join student on student.id = student_todo.student_id join staff on staff.id = student.staff_id join todo on todo.id = student_todo.todo_id where staff.id = 1`),
+    knex('student').select(),
+    knex('contacts').select(),
+    knex('jobs').select(),
+    knex('cohorts').select(),
+    knex('todo')
+  ];
+  Promise.all(sqlArr).then(function(result) {
+    res.render('staff-layout', {
+      staff: result[0],
+      staffHome: result[1].rows,
+      students: result[2],
+      contacts: result[3],
+      jobs: result[4],
+      cohorts: result[5],
+      todo: false,
+      selectedContact: false,
+      selectedJob: false,
+      action: 'add'
+    });
+  });
 });
 
 
 //DELETE TODOS
 router.get('/delete/:id', function(req, res, next) {
-  console.log('tryig to delete here');
   knex('todo').where('id', req.params.id).del().then(function(todo) {
-    res.redirect('/todos');
+    res.redirect(`/staff/1`);
   });
 });
 
@@ -54,7 +94,7 @@ router.get('/:id/edit', function(req, res, next) {
 router.post('/update/:id', function (req, res, next) {
   knex('todo').update(req.body).where('id', req.params.id).then(function (todo) {
     knex('todo').select().then(function (todos) {
-      res.redirect('/todos');
+      res.redirect(`/staff/1`);
     });
   });
 });
@@ -80,10 +120,10 @@ router.post('/notcomplete/:id', function(req, res, next) {
 
 //ADD TODOS
 router.post('/', function(req, res) {
-  console.log(req.body);
+  req.body.status = 'not complete',
   knex('todo').insert(req.body).then(function() {
     knex('todo').select().then(function(todo) {
-      res.redirect('/todos');
+      res.redirect(`/staff/1`);
     });
   });
 });
