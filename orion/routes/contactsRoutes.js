@@ -19,10 +19,11 @@ router.get('/', (req, res, next) => {
       // knex('contacts').select().where('student_id', req.params.id),
       knex.raw(`select c.company_name, c.position, c.student_id, c.id, concat (c.first_name, ' ', c.last_name) as contact_name, concat (s.first_name, ' ', s.last_name) as student_name from contacts c, student s where c.student_id = s.id and s.id = ${student_id}`),
       knex('jobs').select().where('student_id', student_id),
-      knex.raw(`select s.photo_url, s.email, concat (s.first_name, ' ', s.last_name) as student_name, t.*, st.* from student s, todo t, student_todo st where s.id = st.student_id and t.id = st.todo_id and s.id = ${student_id}`)
+      knex.raw(`select s.photo_url, s.email, concat (s.first_name, ' ', s.last_name) as student_name, t.*, st.* from student s, todo t, student_todo st where s.id = st.student_id and t.id = st.todo_id and s.id = ${student_id}`),
+      knex('contacts').where('id', contact_id)
     ];
     Promise.all(sqlArr).then(function(result) {
-      console.log('this is from student routes', result[5].rows)
+      console.log('this is from student routes, selectedContact=', result[6]);
       res.render('student-layout', {
         staff: result[0],
         staffHome: result[1].rows,
@@ -30,7 +31,7 @@ router.get('/', (req, res, next) => {
         contacts: result[3].rows,
         jobs: result[4],
         students: result[5].rows,
-        selectedContact: false,
+        selectedContact: result[6][0],
         selectedJob: false
       })
     })
