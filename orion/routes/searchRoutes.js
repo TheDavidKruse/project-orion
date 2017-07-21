@@ -26,7 +26,7 @@ router.get('/:staff_id', (req, res, next) => {
       todo: result[6],
       selectedContact: false,
       selectedJob: false,
-      queryResult: true
+      action: true
     })
   })
 });
