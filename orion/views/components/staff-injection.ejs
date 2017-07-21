@@ -1,12 +1,30 @@
-<div id="profile" class="row tabcontent">
-  <%-include('staff-profile')%>
-</div>
-<div id="students" class="row tabcontent">
-  <%-include('students-list')%>
-</div>
+<% if (students.length === 1) { %>
+  <div id="profile" class="row">
+    <%-include('staff-profile')%>
+  </div>
+  <div id="students" class="row tabcontent">
+    <%-include('students-list')%>
+  </div>
+<% } else if (students.length > 1) { %>
+  <div id="profile" class="row tabcontent">
+    <%-include('staff-profile')%>
+  </div>
+  <div id="students" class="row">
+    <%-include('students-list')%>
+  </div>
+<% } else { %>
+  <div id="profile" class="row tabcontent">
+    <%-include('staff-profile')%>
+  </div>
+  <div id="students" class="row tabcontent">
+    <%-include('students-list')%>
+  </div>
+<% } %>
+
 <div id="home" class="row tabcontent">
   <%-include('staff-home')%>
 </div>
+
 <div id="todos" class="row tabcontent">
   <%-include('todo-list')%>
 </div>
