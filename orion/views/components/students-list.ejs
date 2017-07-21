@@ -18,9 +18,6 @@
         <td>
           <%= students[j].email %>
         </td>
-        <td>
-          <button type="button" class="student-select" value="<%=students[j].id%>">Select</button>
-        </td>
       </tr>
     <%}%>
     <%}%>
@@ -28,14 +25,4 @@
   </tbody>
   </table>
 <%}%>
-<script type="text/javascript">
-var s;
-if (document.getElementsByClassName('student-select').onclick === true) {
-  alert('help')
-}
-  document.getElementsByClassName('student-select').onclick = function(){
-    console.log("pre-click",s)
-    s = document.getElementsByClassName('student-select').value;
-    console.log("post-click",s)
-  }
-</script>
+<% dontHideMe1(); %>
