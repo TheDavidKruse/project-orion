@@ -21,7 +21,7 @@ router.get('/:id', function(req, res, next) {
     knex('todo')
   ];
   Promise.all(sqlArr).then(function(result) {
-    console.log(result[2])
+    // console.log(result[2])
     res.render('staff-layout', {
       staff: result[0],
       staffHome: result[1].rows,
