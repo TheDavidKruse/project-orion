@@ -1,11 +1,11 @@
-<% if (students.length === 1) { %>
+<% if (students.length === 1 && queryResult) { %>
   <div id="profile" class="row">
     <%-include('staff-profile')%>
   </div>
   <div id="students" class="row tabcontent">
     <%-include('students-list')%>
   </div>
-<% } else if (students.length > 1) { %>
+<% } else if (students.length > 1 && queryResult) { %>
   <div id="profile" class="row tabcontent">
     <%-include('staff-profile')%>
   </div>

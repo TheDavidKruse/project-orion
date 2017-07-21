@@ -31,8 +31,8 @@ router.get('/:id', function(req, res, next) {
       cohorts: result[5],
       todo: result[6],
       selectedContact: false,
-      selectedJob: false
-
+      selectedJob: false,
+      queryResult: false
     })
   })
 

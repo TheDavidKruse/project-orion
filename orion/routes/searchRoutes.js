@@ -6,10 +6,6 @@ var knex = require('../db/knex');
   SEARCH by student's name
 */
 router.get('/:staff_id', (req, res, next) => {
-  // let sqlArr = [
-    // knex('staff').where('id', 1),
-    // knex.raw(`select * from student where lower(concat (first_name, ' ', last_name)) like '%${req.query.student_name}%'`)
-  // ];
   let sqlArr = [knex('staff').select().where('id', req.params.staff_id),
     knex.raw(`select student_todo.*, student.first_name as student_first, student.last_name as student_last, student.staff_id, staff.first_name as staff_first, staff.last_name as staff_last, todo.id, todo.name as assignment_name, todo.description, todo.status from student_todo join student on student.id = student_todo.student_id join staff on staff.id = student.staff_id join todo on todo.id = student_todo.todo_id where staff.id = ${req.params.staff_id}`),
     knex.raw(`select * from student where lower(concat (first_name, ' ', last_name)) like '%${req.query.student_name}%'`),
@@ -29,16 +25,10 @@ router.get('/:staff_id', (req, res, next) => {
       cohorts: result[5],
       todo: result[6],
       selectedContact: false,
-      selectedJob: false
+      selectedJob: false,
+      queryResult: true
     })
   })
-  // Promise.all(sqlArr).then(function(results) {
-  //   // res.send(students.rows);
-  //   res.render('staff-layout', {
-  //     staff: results[0],
-  //     students: results[1]
-  //   });
-  // });
 });
 
 // get student by first name
