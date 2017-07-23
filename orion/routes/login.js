@@ -33,6 +33,8 @@ router.post('/', function(req, res, next) {
 /* Post Sign Out page. */
 router.post('/signout', function(req, res, next) {
   res.clearCookie('login');
+  res.clearCookie('id');
+  res.clearCookie('is_staff');
   res.redirect('/login');
 });
 

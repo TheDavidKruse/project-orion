@@ -1,7 +1,7 @@
 <div id="side-nav" class="sidenav col-md-1">
   <div id="links" class="tab">
-    <button id="students-button" class="tablinks" onclick="openDiv(event, 'students')" name="button">Students</button>
-    <button id="home-button" class="tablinks" onclick="openDiv(event, 'home')" name="button">Home</button>
-    <button id="todos-button" class="tablinks" onclick="openDiv(event, 'todos')" name="button">Todos</button>
+    <a href="/staff/<%=cookies.id%>/"><button id="home-button" class="tablinks" name="button">Home</button></a>
+    <a href="/staff/<%=cookies.id%>/students"><button id="students-button" class="tablinks" name="button">Students</button></a>
+    <a href="/staff/<%=cookies.id%>/todos"><button id="todos-button" class="tablinks" name="button">Todos</button></a>
   </div>
 </div>

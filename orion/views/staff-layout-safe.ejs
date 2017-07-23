@@ -32,15 +32,12 @@
       <%}else if (path == `/${cookies.id}/todos/add`){%>
             <% console.log('this is the path add- ',path);%>
             <%-include('components/todos-add')%>
-      <%}else if (path == `/${cookies.id}/todos/assign/${todo[0].id}`){%>
-            <% console.log('this is the path add- ',path);%>
-            <%-include('components/todo-assign')%>
+      <%}else if (path == `/staff/${cookies.id}/todos/edit/3`){%>
+              <% console.log('this is the path edit - ',path);%>
+              <%-include('components/todos-edit')%>
       <%}else if (base == '/search' && path == `/${cookies.id}`){%>
               <% console.log('this is the base =',base, 'and path =',path);%>
               <%-include('components/student-search')%>
-      <%}else {%>
-              <% console.log('this is the path edit - ',path);%>
-              <%-include('components/todos-edit')%>
       <%}%>
 
 
