@@ -21,6 +21,7 @@ router.post('/', function(req, res) {
     });
 });
 
+
 //EDIT TODOS
 router.post('/update/:id', function(req, res) {
   knex('todo').update(req.body).where('id', req.params.id).then(function() {
@@ -45,4 +46,4 @@ router.post('/notcomplete/:id', function(req, res, next) {
 
 
 
-module.exports = router;
+module.exports = router;;
