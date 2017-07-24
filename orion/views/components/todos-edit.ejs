@@ -1,15 +1,6 @@
-<% if(todo){ %>
-  <h3>Edit To Do</h3>
+<h3>Edit To Do</h3>
   <form class="" action="/todos/update/<%= todo[0].id %>" method="post">
     Name: <input type="text" name="name" placeholder="name" value="<%= todo[0].name %>"><br>
     Description: <input type="text" name="description" placeholder="description" value="<%= todo[0].description %>"><br>
     <input type="submit">
   </form>
-<% } else { %>
-  <h3>Add To Do</h3>
-  <form class="" action="/todos" method="post">
-    Name: <input type="text" name="name" placeholder="name"><br>
-    Description: <input type="text" name="description" placeholder="description"><br>
-    <input type="submit">
-  </form>
-<% } %>
