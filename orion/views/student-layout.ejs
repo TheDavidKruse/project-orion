@@ -18,8 +18,24 @@
 
 <%- include('components/greeting-student') %>
 <div id="inner-content">
+  <% if (path == `/${cookies.id}` || path == `/${cookies.id}/`){%>
+    <% console.log('this is the student path main - ',path);%>
+    <%- include('components/student-profile')%>
 
-<%-include('components/student-injection')%>
+  <%}%>
+  <% if (path == `/${cookies.id}/contacts`){%>
+    <% console.log('this is the contacts - ',path);%>
+    <%-include('components/contacts')%>
+
+  <%} %>
+  <% if (path == `/${cookies.id}/jobs`){%>
+    <% console.log('this is the path jobs- ',path);%>
+    <%-include('components/jobs')%>
+  <%}%>
+
+
+
+
 </div>
 
 <%- include('components/footer') %>

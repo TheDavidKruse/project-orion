@@ -1,12 +1,16 @@
 
       <table class="table table-striped table-hover ">
         <tr>
-          <th>cohort name</th>
-          <th>student name</th>
+          <th><h4>cohort name</h4></th>
+          <th><h4>student name</h4></th>
         </tr>
+        <%console.log('from student-search ejs',student)%>;
+        <%for (let student of student){%>
         <tr>
-          <td></td>
-          <%console.log('from student-search ejs',students)%>;
-          <td><%= students.first_name %></td>
+          <td><%=student.cohort_name%></td>
+            <%let {first_name, last_name} = student%>
+          <td><%=first_name%> <%=last_name%></td>
+
         </tr>
+        <%}%>
       </table>

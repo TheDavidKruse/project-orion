@@ -19,15 +19,14 @@
   <%- include('components/staff-nav') %>
   <%- include('components/greeting') %>
     <div id="inner-content">
-      <% if (path == `/${cookies.id}` || path == `/${cookies.id}/`){%>
-
-        <% console.log('this is the path - ',path);%>
+      <% if (base == `/staff` && path == `/${cookies.id}` || base == `/staff` && path == `/${cookies.id}/`){%>
+        <% console.log('this is the path main - ',path);%>
         <%-include('components/staff-home')%>
       <%}else if (path == `/${cookies.id}/students`){%>
-        <% console.log('this is the path - ',path);%>
+        <% console.log('this is the students list - ',path);%>
         <%-include('components/students-list')%>
       <%}else if (path == `/${cookies.id}/todos`){%>
-        <% console.log('this is the path - ',path);%>
+        <% console.log('this is the path todos- ',path);%>
         <%-include('components/todo-list')%>
       <%}else if (path == `/${cookies.id}/todos/add`){%>
             <% console.log('this is the path add- ',path);%>
@@ -35,9 +34,9 @@
       <%}else if (path == `/${cookies.id}/todos/assign/${todo[0].id}`){%>
             <% console.log('this is the path add- ',path);%>
             <%-include('components/todo-assign')%>
-      <%}else if (base == '/search' && path == `/${cookies.id}`){%>
+      <%}else if (base == '/search'){%>
               <% console.log('this is the base =',base, 'and path =',path);%>
-              <%-include('components/student-search')%>
+              <%-include('components/student-profile')%>
       <%}else {%>
               <% console.log('this is the path edit - ',path);%>
               <%-include('components/todos-edit')%>

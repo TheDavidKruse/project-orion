@@ -12,15 +12,20 @@
   </thead>
   <tbody>
     <% for (let i = 0; i < staffHome.length; i++){%>
-      <% var {st, todo_id, date_due, staff_id, staff_first, staff_last, student_first, student_last, assignment_name, description, status, } = staffHome[i] %>
+      <% var {st, todo_id, date_due, staff_id, staff_first, staff_last, student_first, student_last, assignment_name, description, completed, } = staffHome[i] %>
     <tr>
       <td><%= student_first %> <%= student_last%></td>
       <td><%= assignment_name %></td>
       <td><%= description %></td>
-      <td><%= status %></td>
+      <td><% if (!completed){%>
+        not complete
+        <%} else{%>
+          complete
+        <%}%>
+        </td>
       <td><%= date_due %>
-      <%console.log(st)%>
-      <% if (status == "not complete"){%>
+      <%console.log('from staffHome', completed)%>
+      <% if (!completed){%>
       <form action="/todos/complete/<%=st%>" method="post">
       <td> <input type="hidden" name="staff_id" value="<%=staff_id%>">
       <button >Mark Complete</button></td>
