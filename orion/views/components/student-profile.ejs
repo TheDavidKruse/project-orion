@@ -1,11 +1,12 @@
 <div class="col-md-11">
   <div class="row">
-    <h3><%= students[0].student_name %></h3>
-    <h4><%= students[0].email %></h4>
+    <%console.log('from the student-profile ejs')%>
+    <h3><%= student[0].first_name %></h3>
+    <h4><%= student[0].email %></h4>
   </div>
   <div id="profile" class="row">
     <div id="student-pic-background" class="col-md-2">
-      <img id="student-picture" src="<%= students[0].photo_url %>" alt="">
+      <img id="student-picture" src="<%= student[0].photo_url %>" alt="">
     </div>
     <div class="col-md-3"></div>
     <div class="col-md-7">
@@ -16,15 +17,23 @@
         <th>Name</th>
         <th>Description</th>
         <th>Status</th>
+        <th>Upload File</th>
       </tr>
     </thead>
     <tbody>
-      <% for (var i = 0; i< staffHome.length; i++){%>
-        <% var {name, description, status} = staffHome[i]%>
+      <% for (var i = 0; i< todos.length; i++){%>
+        <% var {name, description} = todos[i]%>
+        <%console.log(todos[i].completed);%>
       <tr>
         <td><%= name %></td>
         <td><%= description %></td>
-        <td><%= status %></td>
+        <td><%if (todos[i].completed){%>
+            complete
+          <%}else {%>
+            not complete
+          <%}%>
+        </td>
+        <td><input type="file"><button type="submit">submit</button></td>
       </tr>
     <%}%>
     </tbody>

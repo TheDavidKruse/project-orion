@@ -1,7 +1,7 @@
 <%var studenter;%>
 <div class="col-md-11">
   <% if (studenter === null){%>
-    
+
   <%}%>
     <div class="row">
       <h3></h3>
@@ -23,7 +23,7 @@
           </thead>
           <tbody>
             <% for (var i = 0; i< staffHome.length; i++){%>
-              <% var {name, description, status} = staffHome[i]%>
+              <% var {name, description, completed} = staffHome[i]%>
                 <tr>
                   <td>
                     <%= name %>
@@ -32,7 +32,7 @@
                     <%= description %>
                   </td>
                   <td>
-                    <%= status %>
+                    <%= completed %>
                   </td>
                 </tr>
                 <%}%>

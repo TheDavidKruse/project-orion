@@ -3,9 +3,9 @@
     <img src="/assets/orion.png" alt="">
   </div>
   <div id="search" class="col-sm-10">
-      <form action="/search/1" method="get">
-        <input class="" id="search-bar" type="text" name="student_name" value="">
-        <button type="submit" name="button">Search</button>
+      <form action="/search/<%=cookies.id%>" method="get">
+        <input class="" id="search-bar" type="text" name="student_name">
+        <button type="submit">Search</button>
       </form>
   </div>
   <form action="/login/signout" method="post">

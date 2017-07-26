@@ -10,9 +10,9 @@
 </tr>
 </thead>
 <tbody>
-  <%console.log(todo);%>
+  <%console.log(staffHome);%>
 <% for (let i = 0; i < staffHome.length; i++){%>
-  <% let {student_id, todo_id, date_due, staff_id, staff_first, staff_last, student_first, student_last, assignment_name, description, status, } = staffHome[i] %>
+  <% let {student_id, id, date_due, staff_id, staff_first, staff_last, student_first, student_last, assignment_name, description, completed } = staffHome[i] %>
 <tr>
   <td><%= student_first %> <%= student_last%></td>
   <td><%= todo[0].name %></td>
